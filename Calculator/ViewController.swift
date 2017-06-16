@@ -9,6 +9,32 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+         /*brain.addUnaryOperation(named: "✅") { [weak weakSelf = self] in // unowned self self.displayLabel
+            weakSelf?.displayLabel.textColor = UIColor.green
+            return sqrt($0)
+        } */
+    }
+//    
+//    private func showSizeClasses() {
+//        if !userIsInTheMiddleOfTyping {
+//            displayLabel.textAlignment = .center
+//            displayLabel.text = "width " + traitCollection.horizontalSizeClass.description + " height " + traitCollection.verticalSizeClass.description
+//        }
+//    }
+    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        showSizeClasses()
+//    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        coordinator.animate(alongsideTransition: { coordinator in
+        }, completion: nil)
+    }
 
     @IBOutlet weak var displayLabel: UILabel!
     
@@ -51,4 +77,18 @@ class ViewController: UIViewController {
     }
 
 }
+
+extension UIUserInterfaceSizeClass: CustomStringConvertible {
+    public var description: String {
+        switch self {
+        case .compact: return "Compact"
+        case .regular: return "Regular"
+        case .unspecified: return "Unspecified"
+        }
+    }
+}
+
+
+
+
 
